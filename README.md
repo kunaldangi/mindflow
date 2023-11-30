@@ -1,5 +1,11 @@
 ## Mindcase
 A web replica of OpenAI, built with Next.js using Supabase and the Shadcn UI.
+#### Test User
+```config
+Email: kunaldangi345@gmail.com
+Password: 12345678
+```
+
 ### How to build?
 Setup environment variable
 ```env
