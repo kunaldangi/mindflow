@@ -18,6 +18,7 @@ cd mindcase
 npm i
 # make sure to setup all environment variables
 npm run dev # to start development server (good for development mode only)
+# OR
 npm run build
 npm run start # to start production server (recommended)
 ```
