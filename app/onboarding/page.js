@@ -6,15 +6,16 @@ import verifyToken from "@/utils/verifyToken";
 import VerifyOTP from "@/components/verifyOtp/VerifyOTP";
 
 export default async function Home() {
-    const cookieStore = cookies();
-    const otp_token = cookieStore.get('otp_token');
-    if (!otp_token){
-        redirect('/signup');
-    }
     try {
+        const cookieStore = cookies();
+        const otp_token = cookieStore.get('otp_token');
+        if (!otp_token){
+            redirect('/signup');
+        }
+
         await verifyToken(otp_token.value, process.env.JWT_OTP_SECRET);
     } catch (error) {
-        console.log(`${error}`);
+        console.log(`ERROR (/onboarding): ${error}`);
         redirect('/signup');
     }
 

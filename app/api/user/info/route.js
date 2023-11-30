@@ -24,7 +24,7 @@ export async function GET(req, res){
         }});
 
     } catch (error) {
-        console.log(`ERROR: ${error}`);
+        console.log(`ERROR (/api/user/info): ${error}`);
         return NextResponse.json({ error: `${error}` });
     }
 }

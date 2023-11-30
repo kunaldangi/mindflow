@@ -27,7 +27,7 @@ export async function POST(req) {
         return new StreamingTextResponse(stream);
         
     } catch (error) {
-        console.log(`ERROR: ${error}`);
+        console.log(`ERROR (/api/chat): ${error}`);
         return new NextResponse.JSON({ error: `${error}` });
     }
 }

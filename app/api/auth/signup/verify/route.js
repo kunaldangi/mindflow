@@ -15,8 +15,6 @@ export async function POST(req) {
         if(!data.code) return NextResponse.json({ error: "Invaild OTP!" });
         
         let otp_data = await verifyToken(otp_token.value, process.env.JWT_OTP_SECRET);
-
-        console.log(otp_data);
         
         let current_timestamp = Date.now() / 1000;
         if((otp_data.exp - current_timestamp) < 0) return NextResponse.json({ error: "OTP expired!" });
@@ -44,7 +42,7 @@ export async function POST(req) {
         return NextResponse.json({ error: "Something went wrong!" });
 
     } catch (error) {
-        console.log(error);
+        console.log(`ERROR (/api/auth/signup/verify): ${error}`);
         return NextResponse.json({ error: "Something went wrong!"});
     }
 }

@@ -30,7 +30,7 @@ export async function POST(req, res){
         return NextResponse.json({state: true, status: "Created!", chat_id: insertChatData[0].id});
 
     } catch (error) {
-        console.log(`ERROR: ${error}`);
+        console.log(`ERROR (/api/chat/create): ${error}`);
         return NextResponse.json({ error: `${error}` });
     }
 }

@@ -21,7 +21,7 @@ export default async function Page() {
 		}
 		await verifyToken(session.value, process.env.JWT_SESSION_SECRET);
 	} catch (error) {
-		console.log(`${error}`);
+		console.log(`ERROR (/app): ${error}`);
         redirect('/login');
 	}
 

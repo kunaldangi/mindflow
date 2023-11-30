@@ -16,8 +16,6 @@ export async function POST(req) {
 
         let otp_data = await verifyToken(otp_token.value, process.env.JWT_OTP_SECRET);
 
-        console.log(otp_data);
-
         const name = data.username + ' ' + data.lastname;
         const { updateUser, updateError } = await supabase
             .from('users')
@@ -37,7 +35,7 @@ export async function POST(req) {
 
         return NextResponse.json({ error: "Something went wrong!"});
     } catch (error) {
-        console.log(error);
+        console.log(`ERROR (/api/auth/signup/saveinfo): ${error}`);
         return NextResponse.json({ error: "Something went wrong!"});
     }
 }

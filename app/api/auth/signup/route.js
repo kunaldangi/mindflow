@@ -39,7 +39,7 @@ export async function POST(req, res) {
         return NextResponse.json({ error: "Something went wrong!" });
 
     } catch (error) {
-        console.log(`ERROR: ${error}`);
+        console.log(`ERROR (/api/auth/signup): ${error}`);
         return NextResponse.json({ error: error });
     }
 }
@@ -70,7 +70,7 @@ async function checkUserSendedData(data) {
     } catch (error) {
         check.state = false;
         check.status = "Bad request";
-        console.log(`ERROR: ${error}`);
+        console.log(`ERROR (/api/auth/signup): ${error}`);
         return check;
     }
 }

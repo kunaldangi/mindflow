@@ -30,6 +30,7 @@ export default async function Page({params}) {
 			redirect('/', 'push');
 		}
 	} catch (error) {
+		console.log(`ERROR (/app/chats): ${error}`);
 		if(redirectError) redirect('/', 'push');
         redirect('/login');
 	}

@@ -26,7 +26,7 @@ export async function POST(req, res){
         return NextResponse.json({state: true, status: "Updated!"});
 
     } catch (error) {
-        console.log(`ERROR: ${error}`);
+        console.log(`ERROR (/api/chat/messages/update): ${error}`);
         return NextResponse.json({ error: `${error}` });
     }
 }

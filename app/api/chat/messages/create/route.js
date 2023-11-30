@@ -3,7 +3,6 @@ import supabase from "@/config/supabase";
 import { cookies } from "next/headers";
 
 import verifyToken from "@/utils/verifyToken";
-import { getAiResponse } from "@/config/openai";
 
 export async function POST(req, res){
 
@@ -25,7 +24,7 @@ export async function POST(req, res){
         return NextResponse.json({state: true, status: "Created!", response: insertMessageData[0]});
 
     } catch (error) {
-        console.log(`ERROR: ${error}`);
+        console.log(`ERROR (/api/chat/messages/create): ${error}`);
         return NextResponse.json({ error: `${error}` });
     }
 }

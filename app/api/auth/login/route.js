@@ -12,7 +12,6 @@ export async function POST(req, res){
         let { data: users, error } = await supabase.from('users').select("*").eq('email', data.email);
         
         if(error) return NextResponse.json({error: error});
-        
         if (!users[0]?.email) return NextResponse.json({error: "Invalid email!"});
         
         let passwordHash = users[0].password; // Direct `users[0].password` pass to compareSync won't work
@@ -32,7 +31,7 @@ export async function POST(req, res){
         return NextResponse.json({state: true, status: "Logged In!"});
 
     } catch (error) {
-        console.log(`ERROR: ${error}`);
+        console.log(`ERROR (/api/auth/login): ${error}`);
         return NextResponse.json({ error: `${error}` });
     }
 }
