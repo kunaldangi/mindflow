@@ -52,6 +52,7 @@ export default async function Page() {
 				<div className="flex-1 flex h-full flex-col items-center justify-center font-medium text-xl">
 					<div className="my-2"> <Image className="mt-8" src="/mindcaseLogoWhite.png" width="65" height="65" alt="image not found!" /> </div>
 					<div>How can I help you today?</div>
+					<div className="text-xs">"Creating new chat might take some time. Streaming text not supported yet!"</div>
 				</div>
 				<div>
 					<IntractionInput/>

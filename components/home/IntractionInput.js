@@ -117,7 +117,7 @@ export default function IntractionInput({ chatId, messages, setMessages }) {
                 }
             }
         }
-    }, [completion]);
+    }, [completion, messages, newMessage, setMessages]);
 
     return (
         <div>

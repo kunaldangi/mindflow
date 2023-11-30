@@ -4,6 +4,7 @@ import supabase from "@/config/supabase";
 
 import verifyToken from "@/utils/verifyToken";
 
+export const dynamic = 'force-dynamic';
 export async function GET(req, res){
     try {
         const cookieStore = cookies();
