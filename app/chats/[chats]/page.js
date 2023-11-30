@@ -47,7 +47,7 @@ export default async function Page({params}) {
 								<span className="pl-2">New chat</span>
 							</div>
 						</Link>
-						<Chats />
+						<Chats currentChatId={chat_id} />
 					</div>
 					<div className="p-[15px] mt-auto"> <Accounts /> </div>
 				</div>

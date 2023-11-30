@@ -1,23 +1,11 @@
 "use client";
 import "./Chats.css";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Loader } from "lucide-react";
 
-function Chat({ title, path }) {
-    if(title.length > 25){
-        title = title.slice(0, 22);
-        title = title + "...";
-    }
-    return (<>
-        <Link href={path}>
-            <div className="flex m-2 p-2 rounded-md hover:bg-slate-700" >{title}</div>
-        </Link>
-    </>);
-}
+import Chat from "@/components/home/Chat";
 
-export default function Chats() {
-
+export default function Chats({currentChatId}) {
     const [chats, setChats] = useState(null);
 
     async function getChats() {
@@ -35,7 +23,7 @@ export default function Chats() {
             {
                 chats ? 
                     chats.map((chat) => {
-                        return <Chat key={chat.id} title={chat.title} path={`/chats/${chat.id}`} />
+                        return <Chat key={chat.id} currentChatId={currentChatId} title={chat.title} chatId={chat.id} path={`/chats/${chat.id}`} />
                     })
                 :
                 <div className="flex h-full justify-center items-center">

@@ -15,11 +15,23 @@ export async function POST(req, res) {
         let otp_code = generate_otp_code();
         let otp_payload = {
             type: 1, // 1 - signup, 2 - forgot password
-            code: otp_code,
             email: data.email,
             password: data.password
         };
+        
+        let {error: deleteError} = await supabase.from('otps').delete().eq('email', data.email);
+        if (deleteError) return NextResponse.json({ error: "Something went wrong!" });
 
+        const { data:otpData, error } = await supabase
+            .from('otps')
+            .insert([
+                { type: otp_payload.type, email: data.email, code: otp_code },
+            ])
+            .select()
+            
+
+        if(error) return NextResponse.json({ error: "Something went wrong!" });
+        console.log(otpData, error);
         let mail_option = {
             from: process.env.GMAIL_ID,
             to: data.email,
@@ -27,6 +39,7 @@ export async function POST(req, res) {
             text: `Your one time password for registering your account is ${otp_code}. This code will expire in 1 hour.`
         };
         let email_status = await send_mail(mail_option);
+
         
         if(email_status.accepted == data.email){
             const otp_token = jwt.sign(otp_payload, process.env.JWT_OTP_SECRET, { expiresIn: '1h' });

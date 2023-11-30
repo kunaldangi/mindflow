@@ -18,11 +18,20 @@ export async function POST(req) {
         
         let current_timestamp = Date.now() / 1000;
         if((otp_data.exp - current_timestamp) < 0) return NextResponse.json({ error: "OTP expired!" });
-        if(data.code != otp_data.code) return NextResponse.json({ error: "Invaild OTP!" });
+
+        let { data: otpData, error:otpError } = await supabase.from('otps').select('*').eq('email', otp_data.email).eq('code', data.code);
+        if (otpError){
+            console.log(otpError);
+            return NextResponse.json({ error: "Invaild OTP!" });
+        } 
+        if (otpData[0]?.code != parseInt(data.code)) return NextResponse.json({ error: "Invaild OTP!" });
 
         let saltPass = bcrypt.genSaltSync(10);
         let hashPass = bcrypt.hashSync(otp_data.password, saltPass);
 
+        let { data: deleteData, error: deleteError} = await supabase.from('otps').delete().eq('email', otp_data.email).eq('code', data.code);
+        if (deleteError) return NextResponse.json({ error: "Something went wrong!" });
+        
         const {insertData, insertError} = await supabase
             .from('users')
             .insert([

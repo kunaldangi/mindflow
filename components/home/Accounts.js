@@ -33,9 +33,9 @@ export default function Accounts() {
                 <></>
             }
             <DropdownMenuContent className="w-56 bg-[#202123] text-white border-slate-800">
-                <DropdownMenuItem className="py-2.5 hover:bg-slate-600"> <Settings className="h-4 w-4 mr-2" />Settings</DropdownMenuItem>
+                <DropdownMenuItem className="py-2.5 hover:!text-white hover:!bg-slate-700"> <Settings className="h-4 w-4 mr-2" />Settings</DropdownMenuItem>
                 <DropdownMenuSeparator className="bg-slate-700" />
-                <DropdownMenuItem className="py-2.5 hover:bg-slate-600"><LogOut className="h-4 w-4 mr-2" />Log out</DropdownMenuItem>
+                <DropdownMenuItem className="py-2.5 hover:!text-white hover:!bg-slate-700"><LogOut className="h-4 w-4 mr-2" />Log out</DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
     </>);    
