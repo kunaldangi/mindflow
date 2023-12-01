@@ -1,9 +1,9 @@
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { FaGoogle } from "react-icons/fa";
+import Link from "next/link";
 import Image from "next/image";
 
 import LoginButton from "@/components/login/LoginButton";
+import GoogleAuth from "@/components/GoogleAuth";
 
 export default function Page() {
 
@@ -23,7 +23,7 @@ export default function Page() {
                     <div className="my-4 text-sm">
                         <p className="text-center">
                             Don't have an account?
-                            <a href="/signup" className="m-2 text-emerald-500">Sign up</a>
+                            <Link href="/signup" className="m-2 text-emerald-500">Sign up</Link>
                         </p>
                     </div>
                     <div className="flex items-center w-full my-2.5">
@@ -32,7 +32,7 @@ export default function Page() {
                         <div className="mx-2 bg-gray-700 h-px grow"></div>
                     </div>
                     <div>
-                        <div><Button className="py-6 border border-gray-300 bg-white text-black w-full hover:bg-gray-200 "> <FaGoogle className="mx-3"/> Continue with Google</Button></div>
+                        <GoogleAuth />
                     </div>
                 </div>
             </main>

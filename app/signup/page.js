@@ -1,9 +1,8 @@
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { FaGoogle } from "react-icons/fa";
 import Image from "next/image";
 
 import SignupButton from "@/components/signup/SignupButton";
+import GoogleAuth from "@/components/GoogleAuth";
 
 export default function Home() {
     
@@ -32,7 +31,7 @@ export default function Home() {
                         <div className="mx-2 bg-gray-700 h-px grow"></div>
                     </div>
                     <div>
-                        <div><Button className="py-6 border border-gray-300 bg-white text-black w-full hover:bg-gray-200 "> <FaGoogle className="mx-3"/> Continue with Google</Button></div>
+                        <GoogleAuth />
                     </div>
                 </div>
             </main>
