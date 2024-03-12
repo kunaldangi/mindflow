@@ -8,10 +8,6 @@ Password: 12345678
 
 ### Demo
 
-
-https://github.com/galaxone/mindcase/assets/61555672/f4bb9fc1-0eb5-4af2-9723-b03c116df894
-
-
 ### How to build?
 Setup environment variable
 ```env
