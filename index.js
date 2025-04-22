@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { nextApp } from './next.js';
+import { nextApp } from './config/next.js';
 import { initializeRoutes } from './api/index.js';
 
 const port = 3000;
@@ -9,6 +9,8 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = express();
 
 async function main(){
+    app.use(express.json()); // middleware to parse JSON request body
+
     initializeRoutes(app); // initializing API routes
     
     const nextHandler = await nextApp(dev); // initializing Next.js
