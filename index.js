@@ -1,8 +1,8 @@
-import { config } from 'dotenv'; config();
 import express from 'express';
 
-import { nextApp } from './config/next.js';
-import { initializeRoutes } from './api/index.js';
+import { connectDb } from './src/config/db.js';
+import { nextApp } from './src/config/next.js';
+import { initializeRoutes } from './src/api/index.js';
 
 const port = 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -10,6 +10,8 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = express();
 
 async function main(){
+    await connectDb(); // connecting to the database
+
     app.use(express.json()); // middleware to parse JSON request body
 
     initializeRoutes(app); // initializing API routes

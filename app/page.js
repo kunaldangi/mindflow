@@ -2,7 +2,7 @@ import "./style.css";
 import Image from "next/image";
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import verifyToken from "@/utils/verifyToken";
+import verifyToken from "@/src/utils/verifyToken";
 import Link from "next/link";
 
 import Version from "@/components/home/Version";

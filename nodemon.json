@@ -1,5 +1,5 @@
 {
-    "ext": "js,json,css,jsx",
+    "ext": "js,json,css,jsx,env",
     "ignore": [
         "node_modules"
     ],
