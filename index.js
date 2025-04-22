@@ -1,3 +1,4 @@
+import { config } from 'dotenv'; config();
 import express from 'express';
 
 import { nextApp } from './config/next.js';
