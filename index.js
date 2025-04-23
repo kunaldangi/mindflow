@@ -1,4 +1,5 @@
 import express from 'express';
+import cookieParser from 'cookie-parser';
 
 import { connectDb } from './src/config/db.js';
 import { nextApp } from './src/config/next.js';
@@ -13,6 +14,7 @@ async function main(){
     await connectDb(); // connecting to the database
 
     app.use(express.json()); // middleware to parse JSON request body
+    app.use(cookieParser()); // middleware to parse cookies
 
     initializeRoutes(app); // initializing API routes
     
