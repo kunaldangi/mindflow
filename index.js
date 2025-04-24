@@ -1,3 +1,4 @@
+import dotenv from 'dotenv'; dotenv.config(); // load env variables
 import express from 'express';
 import cookieParser from 'cookie-parser';
 
@@ -5,7 +6,7 @@ import { connectDb } from './src/config/db.js';
 import { nextApp } from './src/config/next.js';
 import { initializeRoutes } from './src/api/index.js';
 
-const port = 3000;
+const port = process.env.PORT || 3000; 
 const dev = process.env.NODE_ENV !== 'production';
 
 const app = express();
