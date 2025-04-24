@@ -1,5 +1,6 @@
-## Mindcase
+## MindFlow
 A web replica of OpenAI, built with Next.js using Supabase and the Shadcn UI.
+
 #### Test User
 ```config
 Email: kunaldangi345@gmail.com
@@ -23,8 +24,8 @@ OTP_EXPIRY_TIME=
 JWT_SESSION_SECRET=
 ```
 ```bash
-git clone https://github.com/galaxone/mindcase.git
-cd mindcase
+git clone https://github.com/galaxone/mindflow.git
+cd mindflow
 npm i
 # make sure to setup all environment variables
 npm run dev # to start development server (good for development mode only)

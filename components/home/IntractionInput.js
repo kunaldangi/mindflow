@@ -122,7 +122,7 @@ export default function IntractionInput({ chatId, messages, setMessages }) {
     return (
         <div>
             <div className="flex flex-row items-start p-4 space-x-4">
-                <Textarea id="id-inp-intraction" onKeyDown={onKeyPress} onKeyUp={onKeyRelease} onChange={handleInputChange} className="h-[25px] max-h-[100px] px-5 py-4 text-[16px] font-[425] bg-transparent border-gray-400 rounded-[23px] text-white resize-none" placeholder="Message mindcase..." disabled={loading || isLoading} />
+                <Textarea id="id-inp-intraction" onKeyDown={onKeyPress} onKeyUp={onKeyRelease} onChange={handleInputChange} className="h-[25px] max-h-[100px] px-5 py-4 text-[16px] font-[425] bg-transparent border-gray-400 rounded-[23px] text-white resize-none" placeholder="Message mindflow..." disabled={loading || isLoading} />
                 <Button onClick={sendMsg} className="self-center" disabled={loading || isLoading}>
                     { loading || isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <SendHorizonal className="h-4 w-4" /> }
                 </Button>

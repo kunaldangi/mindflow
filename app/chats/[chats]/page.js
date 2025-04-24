@@ -43,7 +43,7 @@ export default async function Page({params}) {
 					<div className="flex flex-col grow">
 						<Link href="/">
 							<div className="h-12 m-2 flex flex-row items-center text-sm px-4 font-semibold hover:bg-slate-700 rounded-md">
-								<Image src="/mindcaseLogoWhite.png" width="30" height="30" alt="image not found!" />
+								<Image src="/mindflowLogoWhite.png" width="30" height="30" alt="image not found!" />
 								<span className="pl-2">New chat</span>
 							</div>
 						</Link>

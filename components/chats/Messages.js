@@ -7,11 +7,11 @@ function ResponseMessage({content}){
     return (<>
         <div className="px-[10%] py-3 flex">
             <Avatar className="w-6 h-6">
-                <AvatarImage src="/mindcaseLogoWhite.png"/>
+                <AvatarImage src="/mindflowLogoWhite.png"/>
                 <AvatarFallback>mc</AvatarFallback>
             </Avatar>
             <div className="mx-4">
-                <div className="pb-1 text-sm font-semibold">mindcase</div>
+                <div className="pb-1 text-sm font-semibold">MindFlow</div>
                 <div className="text-[15px]">{content}</div>
             </div>
         </div>
