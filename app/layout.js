@@ -4,7 +4,7 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'MindFlow - AI Chatbot',
+  title: 'MindFlows - AI Chatbot',
 }
 
 export default function RootLayout({ children }) {
