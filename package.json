@@ -7,7 +7,8 @@
     "dev": "nodemon",
     "build": "next build",
     "start": "npm run build && node index.js",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "node ./scripts/openrouter.js"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.4",
@@ -29,7 +30,7 @@
     "next": "^14.2.28",
     "nodemailer": "^6.9.7",
     "nodemon": "^3.1.9",
-    "openai": "^4.20.1",
+    "openai": "^4.96.0",
     "pg": "^8.15.0",
     "pg-hstore": "^2.3.4",
     "react": "^18",
