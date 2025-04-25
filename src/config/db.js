@@ -3,6 +3,9 @@ import { Sequelize } from "sequelize";
 
 import { initializeUsersModel } from '../models/Users.js';
 import { initializeOtpsModel } from '../models/Otps.js';
+import { initializeModelsModel } from '../models/Models.js';
+import { initializeChatsModel } from '../models/Chats.js';
+import { initializeMessagesModel } from '../models/Messages.js';
 
 const sequelize = new Sequelize(`postgres://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
     {
@@ -15,6 +18,9 @@ const sequelize = new Sequelize(`postgres://${process.env.DB_USER}:${process.env
 
 let Users = null;
 let Otps = null;
+let Models = null;
+let Chats = null;
+let Messages = null;
 
 export async function connectDb(){
     try {
@@ -23,6 +29,9 @@ export async function connectDb(){
 
         Users = await initializeUsersModel(sequelize);
         Otps = await initializeOtpsModel(sequelize);
+        Models = await initializeModelsModel(sequelize);
+        Chats = await initializeChatsModel(sequelize);
+        Messages = await initializeMessagesModel(sequelize);
 
         await sequelize.sync({alter: true});
     } catch (error) {
@@ -31,4 +40,4 @@ export async function connectDb(){
 }
 
 export default sequelize;
-export { Users, Otps };
+export { Users, Otps, Models, Chats, Messages };
