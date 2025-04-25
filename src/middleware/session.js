@@ -2,6 +2,7 @@ import verifyToken from "../utils/verifyToken.js";
 
 let secured_routes = [
     "/api/user",
+    "/api/chat",
 ];
 
 export default async function checkSession(req, res, next){
