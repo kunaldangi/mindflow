@@ -15,11 +15,17 @@ export default async function Page() {
 	try { // user account verification
 		const cookieStore = cookies();
 		const session = cookieStore.get('session');
-	
+
 		if (!session) {
 			redirect('/login');
 		}
-		await verifyToken(session.value, process.env.JWT_SESSION_SECRET);
+		let userData = await verifyToken(session.value, process.env.JWT_SESSION_SECRET);
+		
+		if(!userData || !userData?.userid){
+			redirectError = true;
+			redirect('/', 'push');
+		}
+
 	} catch (error) {
 		console.log(`ERROR (/app): ${error}`);
         redirect('/login');
