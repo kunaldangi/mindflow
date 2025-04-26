@@ -23,11 +23,10 @@ export default async function Page({params}) {
 		}
 		let user_info = await verifyToken(session.value, process.env.JWT_SESSION_SECRET);
 		
-		// let { data: selectChatsData, error: chatError } = await supabase.from('chats').select('*').eq('id', chat_id).eq('user_id', user_info.userid).single();
-		// if(!selectChatsData || chatError){
-		// 	redirectError = true;
-		// 	redirect('/', 'push');
-		// }
+		if(!user_info || !user_info?.userid){
+			redirectError = true;
+			redirect('/', 'push');
+		}
 	} catch (error) {
 		console.log(`ERROR (/app/chats): ${error}`);
 		if(redirectError) redirect('/', 'push');
@@ -46,7 +45,7 @@ export default async function Page({params}) {
 								<span className="pl-2">New chat</span>
 							</div>
 						</Link>
-						{/* <Chats currentChatId={chat_id} /> */}
+						<Chats currentChatId={chat_id} />
 					</div>
 					<div className="p-[15px] mt-auto"> <Accounts /> </div>
 				</div>
@@ -54,10 +53,10 @@ export default async function Page({params}) {
 
 			<div className='h-screen w-full relative bg-[#343541]'>
 				<div className="absolute top-0 right-0 p-2.5 w-full box-border z-[5] bg-[#3435418f]" >
-					{/* <ShowChatButton /> */}
+					<ShowChatButton />
 				</div>
 				
-				{/* <Intraction chatId={chat_id} /> */}
+				<Intraction chatId={chat_id} />
 			</div>
 		</div>
 	);
