@@ -14,8 +14,11 @@ export default function Chat({ currentChatId, chatId, title, path }) {
     async function deleteChat() {
         if(isDeleting) return;
         isDeleting = true;
-        const response = await fetch("/api/chat/delete", {
-            method: "POST",
+        const response = await fetch("/api/chat/", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify({
                 chatId: chatId
             })

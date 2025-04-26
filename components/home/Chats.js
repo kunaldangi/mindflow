@@ -9,7 +9,7 @@ export default function Chats({currentChatId}) {
     const [chats, setChats] = useState(null);
 
     async function getChats() {
-        const response = await fetch("/api/chat/get");
+        const response = await fetch("/api/chat/");
         const data = await response.json();
         setChats(data.chats);
     }

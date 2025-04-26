@@ -20,7 +20,7 @@ function ResponseMessage({content}){
 
 function RequestMessage({username, content}){
     return (<>
-        <div className="px-[10%] py-3 flex">
+        <div className="px-[10%] py-3 flex justify-end">
             <Avatar className="w-6 h-6">
                 <AvatarImage src="https://github.com/shadcn.png"/>
                 <AvatarFallback>CN</AvatarFallback>
@@ -44,16 +44,10 @@ export default function Messages({chatId, userInfo, messages}) {
         <div ref={messageContainer} id="id-messages" className="h-[100px] pt-10 grow overflow-y-scroll flex flex-col justify-start">
             {
                 messages ? 
-                    messages.map((message, index) => <span key={index}>
-                        {
-                            userInfo ?
-                                <RequestMessage username={userInfo.name} content={message.user_request}/>
-                            :
-                            <RequestMessage username="Shad" content={message.user_request}/>
-                        }
-                        <ResponseMessage content={message.ai_response}/>
-                    </span>)
-                    
+                    messages.map((message, index) => {
+                    return <span key={index}>
+                        { message.authorType == "user" ? <RequestMessage username={userInfo.name ? userInfo.name : "Shad"} content={message.content}/> : <ResponseMessage content={message.content}/> }
+                    </span>})
                 : 
                 <div className="flex justify-center"> <Loader2 className="h-6 w-6 animate-spin" /> </div>
             }
