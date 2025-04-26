@@ -20,7 +20,8 @@ export async function initializeMessagesModel(sequelize) {
         },
         authorType: {
             type: DataTypes.ENUM('user', 'ai'),
-            allowNull: false
+            allowNull: false,
+            unique: 'authorType_authorId_unique'
         },
         authorId: {
             type: DataTypes.INTEGER,
@@ -30,7 +31,8 @@ export async function initializeMessagesModel(sequelize) {
                 key: 'id'
             },
             onDelete: 'NO ACTION',
-            onUpdate: 'CASCADE'
+            onUpdate: 'CASCADE',
+            unique: 'authorType_authorId_unique'
         },
         content: {
             type: DataTypes.TEXT,
