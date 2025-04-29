@@ -18,7 +18,6 @@ export default async function interact(req, res) {
         if (!session) return res.json({ error: "You are not logged in!" });
 
         let data = req.body;
-        console.log("Data: ", data);
         if (!data.chatId || !data.model || !data.message) return res.json({ error: "Missing data!" });
 
         if(!data.isFirstMsg) {
@@ -28,8 +27,7 @@ export default async function interact(req, res) {
                 authorId: session.userid,
                 content: data.message,
             });
-
-            console.log('User Message Result: ', userMsgResult);
+            if (!userMsgResult.dataValues) return res.json({ error: "Failed to create user message!" });
         }
 
         res.setHeader('Content-Type', 'text/event-stream');
@@ -65,8 +63,6 @@ export default async function interact(req, res) {
         }
 
         req.on('close', async () => {
-            console.log('Connection closed by client');
-            console.log('AI Message: ', aiMessage);
 
             let msgResult = await Messages.create({
                 chatId: data.chatId,
@@ -75,11 +71,11 @@ export default async function interact(req, res) {
                 reasoning: aiMessage.reasoning,
                 content: aiMessage.content,
             });
-            console.log('Message Result: ', msgResult);
+
+            if(!msgResult.dataValues) console.log("Failed to save AI message in db!");
+
             res.end();
         });
-
-        console.log('AI Message: ', aiMessage);
 
         let msgResult = await Messages.create({
             chatId: data.chatId,
@@ -88,7 +84,8 @@ export default async function interact(req, res) {
             reasoning: aiMessage.reasoning,
             content: aiMessage.content,
         });
-        console.log('Message Result: ', msgResult);
+
+        if(!msgResult.dataValues) console.log("Failed to save AI message in db!");
         res.end();
     } catch (error) {
         console.log(error);
