@@ -8,7 +8,7 @@ export default async function getMessages(req, res) {
 
         if (!data.chatId) return res.json({ error: "Invalid chat id!" });
 
-        let msgResult = await Messages.findAll({ where: { chatId: data.chatId }});
+        let msgResult = await Messages.findAll({ where: { chatId: data.chatId }, order: [['createdAt', 'ASC']]});
         if (!msgResult.length < 0) return res.json({ error: "Unable to fetch data!" });
 
         return res.json({ state: true, status: "fetched!", messages: msgResult });
