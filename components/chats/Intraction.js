@@ -18,14 +18,11 @@ export default function Intraction({chatId}){
         }
 
         const getMessages = async () => {
-            let res = await fetch('/api/chat/messages/get', {
-                method: "POST",
+            let res = await fetch(`/api/chat/messages?chatId=${chatId}`, {
+                method: "GET",
                 headers: {
                     'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    chat_id: chatId
-                })
+                }
             });
     
             let data = await res.json();

@@ -10,6 +10,7 @@ import ShowChatButton from "@/components/home/ShowChat";
 import IntractionInput from "@/components/home/IntractionInput";
 import Accounts from "@/components/home/Accounts";
 import Chats from "@/components/home/Chats";
+import CreateChatInput from "@/components/home/CreateChat";
 
 export default async function Page() {
 	try { // user account verification
@@ -58,10 +59,9 @@ export default async function Page() {
 				<div className="flex-1 flex h-full flex-col items-center justify-center font-medium text-xl">
 					<div className="my-2"> <Image className="mt-8" src="/mindflowLogoWhite.png" width="65" height="65" alt="image not found!" /> </div>
 					<div>How can I help you today?</div>
-					<div className="text-xs">"Creating a new chat might take some time. Streaming text while creating a new chat not supported yet!"</div>
 				</div>
 				<div>
-					<IntractionInput/>
+					<CreateChatInput />
 				</div>
 			</div>
 		</div>
