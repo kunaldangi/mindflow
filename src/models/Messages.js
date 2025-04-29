@@ -21,7 +21,6 @@ export async function initializeMessagesModel(sequelize) {
         authorType: {
             type: DataTypes.ENUM('user', 'ai'),
             allowNull: false,
-            unique: 'authorType_authorId_unique'
         },
         authorId: {
             type: DataTypes.INTEGER,
@@ -32,11 +31,16 @@ export async function initializeMessagesModel(sequelize) {
             },
             onDelete: 'NO ACTION',
             onUpdate: 'CASCADE',
-            unique: 'authorType_authorId_unique'
+        },
+        reasoning: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+            defaultValue: "",
         },
         content: {
             type: DataTypes.TEXT,
-            allowNull: false
+            allowNull: true,
+            defaultValue: "",
         }
     });
 }
