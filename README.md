@@ -1,5 +1,5 @@
 ## MindFlow
-A web replica of OpenAI, built with Next.js using Supabase and the Shadcn UI.
+A web-based AI chat bot.
 
 #### Test User
 ```config
