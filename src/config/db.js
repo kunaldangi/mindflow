@@ -17,15 +17,22 @@ import { initializeMessagesModel } from '../models/Messages.js';
 //     }
 // );
 
-const caCert = fs.readFileSync(process.env.SSL_CERT).toString();
+const caCert = fs.readFileSync(`${process.env.SSL_CERT}`).toString();
 
+console.log("DB_NAME: ", process.env.DB_NAME, 
+    "DB_USER: ", process.env.DB_USER,
+    "DB_PASS: ", process.env.DB_PASS,
+    "DB_HOST: ", process.env.DB_HOST,
+    "DB_PORT: ", process.env.DB_PORT,
+    "SSL_CERT: ", process.env.SSL_CERT
+);
 const sequelize = new Sequelize(
-    process.env.DB_NAME,
-    process.env.DB_USER,
-    process.env.DB_PASS,
+    `${process.env.DB_NAME}`,
+    `${process.env.DB_USER}`,
+    `${process.env.DB_PASS}`,
     {
-        host: process.env.DB_HOST,
-        port: Number(process.env.DB_PORT || 5432),
+        host: `${process.env.DB_HOST}`,
+        port: Number(`${process.env.DB_PORT}` || 5432),
         dialect: 'postgres',
         define: {
             freezeTableName: true,
