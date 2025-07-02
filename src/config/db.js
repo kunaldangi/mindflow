@@ -8,18 +8,18 @@ import { initializeModelsModel } from '../models/Models.js';
 import { initializeChatsModel } from '../models/Chats.js';
 import { initializeMessagesModel } from '../models/Messages.js';
 
-// const sequelize = new Sequelize(`postgres://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
-//     {
-//         dialect: 'postgres',
-//         define: {
-//             freezeTableName: true,
-//         }
-//     }
-// );
+const sequelize = new Sequelize(`postgres://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
+     {
+         dialect: 'postgres',
+         define: {
+             freezeTableName: true,
+         }
+     }
+ );
 
-const caCert = fs.readFileSync(`${process.env.SSL_CERT}`).toString();
+// const caCert = fs.readFileSync(`${process.env.SSL_CERT}`).toString();
 
-const sequelize = new Sequelize(
+/* const sequelize = new Sequelize(
     `${process.env.DB_NAME}`,
     `${process.env.DB_USER}`,
     `${process.env.DB_PASS}`,
@@ -38,7 +38,7 @@ const sequelize = new Sequelize(
             }
         }
     }
-);
+); */
 
 
 let Users = null;
