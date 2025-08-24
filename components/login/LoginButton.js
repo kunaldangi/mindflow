@@ -27,14 +27,13 @@ export default function LoginButton() {
         });
 
         let data = await repsonse.json();
-        console.log(data);
 
         if(data.error){
             setError(data.error);
         }
         
         setLoading(false);
-        if(data.state){
+        if(data.success){
             setError(null);
             router.push('/');
         }

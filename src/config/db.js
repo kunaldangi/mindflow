@@ -1,5 +1,4 @@
 import { config } from 'dotenv'; config();
-import fs from 'fs';
 import { Sequelize } from "sequelize";
 
 import { initializeUsersModel } from '../models/Users.js';
@@ -8,14 +7,10 @@ import { initializeModelsModel } from '../models/Models.js';
 import { initializeChatsModel } from '../models/Chats.js';
 import { initializeMessagesModel } from '../models/Messages.js';
 
-const sequelize = new Sequelize(`postgres://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
-     {
-         dialect: 'postgres',
-         define: {
-             freezeTableName: true,
-         }
-     }
- );
+const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: './database.sqlite',
+});
 
 // const caCert = fs.readFileSync(`${process.env.SSL_CERT}`).toString();
 
@@ -58,7 +53,7 @@ export async function connectDb() {
         Chats = await initializeChatsModel(sequelize);
         Messages = await initializeMessagesModel(sequelize);
 
-        await sequelize.sync({ alter: true });
+        await sequelize.sync();
 
         let deleteModels = await Models.destroy({ where: {}, truncate: true, restartIdentity: true });
 

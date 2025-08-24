@@ -16,8 +16,8 @@ export default function Page() {
                 <div className="text-center font-bold text-3xl p-7">Welcome back</div>
                 <div>
                     <div>
-                        <Input id="inp-login-email" className="p-6 mb-2" type="text" placeholder="Email Address" />
-                        <Input id="inp-login-pwd" className="p-6 mb-7" type="password" placeholder="Password" />
+                        <Input id="inp-login-email" className="p-6 mb-2" type="text" placeholder="Email Address" defaultValue="arya250611@gmail.com" />
+                        <Input id="inp-login-pwd" className="p-6 mb-7" type="password" placeholder="Password" defaultValue="12345678" />
                         <LoginButton />
                     </div>
                     <div className="my-4 text-sm">
