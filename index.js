@@ -7,7 +7,7 @@ import { nextApp } from './src/config/next.js';
 import { initializeRoutes } from './src/api/index.js';
 
 const port = process.env.PORT || 3000; 
-const dev = process.env.NODE_ENV !== 'production';
+const dev = process.env.BACKEND_ENV !== 'production';
 
 const app = express();
 
